@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Education | Jamyang</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* EDUCATION SECTION IMAGES - smaller and round */
+    .education-left img {
+      width: 200px;       /* smaller size */
+      height: 350px;      /* smaller size */
+      object-fit: cover;
+      border-radius: 100%; /* round shape */
+    }
+
+    /* Mobile responsive adjustment */
+    @media (max-width: 900px) {
+      .education-left img {
+        width: 50px;    /* smaller on mobile */
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+
+    /* Read More / Read Less */
+    .more-text {
+      display: none;
+    }
+
+    .read-more-btn {
+      margin-top: 10px;
+      background: #2575fc;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .read-more-btn:hover {
+      background: #1a5ac1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <nav class="navbar">
+    <h1 class="logo"><span></span></h1>
+    <h3 class="page-quote"></h3>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html" class="active">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Education Section -->
+<section class="education-frame">
+
+  <div class="education-card">
+    <div class="education-left">
+      <img src="photo_2025-09-25_14-17-55.jpg" alt="School Image">
+    </div>
+    <div class="education-right">
+      <h2>Ladrong Primary School</h2>
+      <p class="edu-text">
+        I completed my primary education at Ladrong Primary School, where I studied from Pre-Primary (PP) up to Class 6.
+        <span class="more-text"> During my years there, I built the foundation of my learning, developed essential skills in reading, writing, and communication, and actively participated in school activities that helped me grow both academically and personally.</span>
+      </p>
+      <button class="read-more-btn">Read More</button>
+    </div>
+  </div>
+
+  <div class="education-card">
+    <div class="education-left">
+      <img src="photo_2025-09-25_14-14-19.jpg" alt="College Image">
+    </div>
+    <div class="education-right">
+      <h2>Autsho Central School</h2>
+      <p class="edu-text">
+        I completed my schooling at Autsho Central School, where I studied from the lower grades up to class 10.
+        <span class="more-text"> My time there not only helped me build a strong academic foundation but also gave me opportunities to take part in various school activities, which enhanced my confidence, teamwork, and leadership skills.</span>
+      </p>
+      <button class="read-more-btn">Read More</button>
+    </div>
+  </div>
+
+  <div class="education-card">
+    <div class="education-left">
+      <img src="photo_2025-09-25_14-12-01.jpg" alt="College Image">
+    </div>
+    <div class="education-right">
+      <h2>Rangjung Higher Secondary School</h2>
+      <p class="edu-text">
+        I have successfully completed my higher secondary education (classes 11–12) from Rangjung Central School.
+        <span class="more-text"> I gained a strong academic foundation and developed essential skills that continue to support my learning journey.</span>
+      </p>
+      <button class="read-more-btn">Read More</button>
+    </div>
+  </div>
+
+  <div class="education-card">
+    <div class="education-left">
+      <img src="photo_2025-09-25_14-14-10.jpg" alt="College Image">
+      <img src="photo_2025-09-25_14-21-18.jpg" alt="College Image">
+    </div>
+    <div class="education-right">
+      <h2>Samtse College of Education</h2>
+      <p class="edu-text">
+        Currently pursuing a B.Ed in ICT, I am passionate about integrating technology into education.
+        <span class="more-text"> I enjoy exploring innovative teaching methods and creating interactive learning experiences to make education more engaging and effective.</span>
+      </p>
+      <button class="read-more-btn">Read More</button>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2025 Jamyang | Portfolio</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  const readMoreButtons = document.querySelectorAll(".read-more-btn");
+
+  readMoreButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const moreText = button.previousElementSibling.querySelector(".more-text");
+      if (moreText.style.display === "inline") {
+        moreText.style.display = "none";
+        button.textContent = "Read More";
+      } else {
+        moreText.style.display = "inline";
+        button.textContent = "Read Less";
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
