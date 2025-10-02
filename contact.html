@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Jamyang</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <nav class="navbar">
+    <h1 class="logo"><span></span></h1>
+    <h3 class="page-quote"></h3>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Contact Section -->
+<section class="contact">
+
+  <p>I'd love to hear from you! Feel free to reach out through any of the platforms below:</p>
+
+  <p><i class="ri-mail-line"></i> Email: 
+  <a href="https://mail.google.com/mail/u/1/?ogbl#inbox?compose=new" target="_blank">
+    jamyangchoden483@gmail.com
+  </a>
+</p>
+
+  <p><i class="ri-phone-line"></i> Phone: <a href="tel:+97512345678">+975 17379493</a></p>
+  <p><i class="ri-map-pin-line"></i> Location: Samtse, Bhutan</p>
+
+  <!-- Social Icons -->
+ 
+<div class="social">
+  <a href="https://www.facebook.com/share/17CcvHA9PU/" target="_blank">
+    <i class="ri-facebook-fill"></i> Facebook
+  </a>
+  <a href="https://www.instagram.com/_whois_jamy.07?igsh=MTY2Z3N1eWJ3a3BzNA==" target="_blank">
+    <i class="ri-instagram-line"></i> Instagram
+  </a>
+  <a href="https://www.linkedin.com/in/yourusername" target="_blank">
+    <i class="ri-linkedin-box-fill"></i> LinkedIn
+  </a>
+</div>
+
+
+  <!-- Form status -->
+  <div id="form-status" class="form-status" aria-live="polite" style="display:none;"></div>
+
+  <!-- Contact Form
+       If you want real email delivery, replace the action URL with your Formspree endpoint:
+       action="https://formspree.io/f/your-form-id"
+  -->
+  <form id="contact-form" class="contact-form" method="POST" action="">
+    <input id="name" name="name" type="text" placeholder="Your Name" required />
+    <input id="email" name="email" type="email" placeholder="Your Email" required />
+    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 Jamyang | Portfolio</p>
+</footer>
+
+<script>
+
+(function(){
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+
+  function showMessage(text, success=true){
+    status.style.display = 'block';
+    status.textContent = text;
+    status.className = success ? 'form-status success' : 'form-status error';
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    const action = form.getAttribute('action') || '';
+
+    try {
+      if (action && action.includes('formspree.io')) {
+        // send to Formspree (or any POST endpoint that accepts form data)
+        const res = await fetch(action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          showMessage('Message sent successfully — thank you!', true);
+          form.reset();
+        } else {
+          const json = await res.json().catch(()=>({}));
+          throw new Error(json.error || 'Submission failed. Please try again.');
+        }
+      } else {
+        // no action: simulate success for local testing
+        await new Promise(resolve => setTimeout(resolve, 700));
+        showMessage('Demo: message sent (no backend). Replace form action to send real emails.', true);
+        form.reset();
+      }
+    } catch(err) {
+      showMessage('Error: ' + (err.message || 'Could not send message.'), false);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    }
+  });
+})();
+</script>
+<script src="script.js"></script>
+
+</body>
+</html>
